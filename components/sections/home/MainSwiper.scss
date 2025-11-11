@@ -1,0 +1,58 @@
+.upcoming-wrapper {
+    .swiper {
+        .swiper-wrapper {
+            .swiper-slide {
+                .upcoming-movie {
+                    position: relative;
+                    border-radius: var(--radius-8);
+                    overflow: hidden;
+                    .upcoming-movie__image {
+                        img {
+                            border-radius: var(--radius-8);
+                            object-fit: cover;
+                        }
+                    }
+
+                    .upcoming-movie__content {
+                        position: absolute;
+                        bottom: 0; left: 0; right: 0;
+                        background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
+                        padding: var(--spacing-4) var(--spacing-3);
+
+                        .movie-title {
+                            font-weight: bold;
+                            color: var(--color-4);
+                            margin-bottom: var(--spacing-4);
+                        }
+
+                        .movie-genre-list {
+                            display: flex;
+                            gap: var(--spacing-3);
+                        }
+                    }
+
+                    .upcoming-badge {
+                        position: absolute;
+                        top: var(--spacing-3); right: var(--spacing-3);
+
+                        p {
+                            padding: var(--spacing-3) var(--spacing-4);
+                            border-radius: var(--spacing-1);
+                            color: var(--color-1);
+                            background-color: var(--color-5);
+                        }
+                    }
+                }
+            }
+            
+        }
+        .swiper-button-prev,
+        .swiper-button-next {
+            svg {
+                color: var(--color-1);
+                width: auto; height: 2.5rem;
+                object-fit: cover;
+            }
+        }
+    }
+}

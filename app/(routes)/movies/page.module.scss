@@ -1,0 +1,7 @@
+.movies {
+    .movies-wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(clamp(10.5rem, 7.4692rem + 10.7981vw, 16.5rem), 1fr));
+        gap: clamp(0.5rem, 2vw, 1.2rem);
+    }
+}

@@ -1,0 +1,22 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    margin: var(--spacing-8);
+
+    .pagination-btn {
+        display: grid;
+        place-content: center;
+        width: 40px; height: 40px;
+        border-radius: var(--radius-1);
+        color: var(--color-4);
+
+        &.active {
+            color: var(--color-4);
+            padding: 10px;
+            background-color: var(--color-3);
+        }
+    }
+
+}

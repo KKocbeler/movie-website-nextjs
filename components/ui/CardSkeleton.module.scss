@@ -1,0 +1,32 @@
+.card-skeleton {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    border-radius: var(--radius-2);
+    background-color: #161515;
+    aspect-ratio: 1 / 1.4;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 15rem; height: 100%;
+        background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(15, 15, 15, 0.1),
+        transparent
+        );
+        animation: movingLight 2s ease infinite;
+    }
+}
+
+@keyframes movingLight {
+    0% {
+        transform: translateX(-5rem);
+    }
+
+    100% {
+        transform: translateX(25rem);
+    }
+}

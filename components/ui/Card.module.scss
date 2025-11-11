@@ -1,0 +1,61 @@
+.card {
+    border-radius: var(--radius-2);
+    overflow: hidden;
+
+    .card__image {
+        position: relative;
+        aspect-ratio: 1 / 1.4;
+        &:hover {
+            .card__hover {
+                visibility: visible;
+                opacity: 1;
+            }
+
+        }
+        img {
+            width: 100%; height: auto;
+        }
+
+        .card__hover {
+            background-color: rgba(24, 27, 25, .8);
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all .3s;
+            text-align: center;
+            
+            .movie-title {
+                color: var(--color-4);
+            }
+            .release-date {
+                color: var(--color-4);
+            }
+
+            .genre-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: var(--spacing-3);
+                margin-top: var(--spacing-2);
+
+            }
+        }
+    }
+
+
+
+    .card__content {
+        .card__title {
+            margin-top: var(--spacing-3);
+            line-clamp: 2;
+        }
+    }
+
+
+
+}
