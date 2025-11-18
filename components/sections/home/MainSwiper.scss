@@ -10,6 +10,10 @@
                         img {
                             border-radius: var(--radius-8);
                             object-fit: cover;
+                            height: 65vh;
+                            @media (min-width: 48rem) {
+                                height: auto;
+                            }
                         }
                     }
 
@@ -38,7 +42,7 @@
                         p {
                             padding: var(--spacing-3) var(--spacing-4);
                             border-radius: var(--spacing-1);
-                            color: var(--color-1);
+                            color: var(--color-2);
                             background-color: var(--color-5);
                         }
                     }
