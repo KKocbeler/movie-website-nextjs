@@ -12,29 +12,25 @@ html {
     font-size: 16px;
 }
 
-/* .dark {
-    background: hsl(240, 3%, 8%);
-    text-color:hsl(240, 15%, 92%)
-
-    --color1 hsl(36, 33%, 95%)
-    --color-1-hover: hsl(36, 33%, 97%)
-} */
-
 :root {
     --bg-color: hsl(0, 0%, 100%);
     --text-color: hsl(240, 3%, 8%);
+    --footer-bg: hsl(240, 23%, 97%);
+    --card-1: hsl(36, 33%, 97%);
+    --card-1-hover: hsl(36, 33%, 95%);
+    --card-outline: hsl(240, 3%, 8%);
 
-    /* Ana renkler */
-    --color-1: hsl(36, 33%, 97%);   /* #1C2938 - koyu lacivert */
-    --color-3: hsl(33, 49%, 34%);   /* #412B6B - mor ton */
-    --color-4: hsl(180, 10%, 96%);   /* #F4F6F6 - çok açık gri */
-    --color-5: hsl(48, 100%, 62%);   /* #FFD93D - parlak sarı */
+    --color-1: hsl(36, 33%, 97%);  
+    --color-2: hsl(240, 3%, 8%);
+    --color-3: hsl(199, 74%, 40%); 
+    --color-4: hsl(180, 10%, 96%);
+    --color-5: hsl(209, 49%, 79%);   
 
-    /* Hover renkleri */
-    --color-1-hover: hsl(36, 33%, 95%);  /* biraz daha açık */
-    --color-3-hover: hsl(33, 49%, 40%);  /* mor biraz daha açık */
-    --color-4-hover: hsl(180, 10%, 90%);  /* hafif koyulaşmış gri */
-    --color-5-hover: hsl(48, 100%, 70%);  /* daha açık sarı */
+    --color-1-hover: hsl(36, 33%, 95%);  
+    --color-2-hover: hsl(240, 3%, 12%);
+    --color-3-hover: hsl(199, 74%, 35%);  
+    --color-4-hover: hsl(180, 10%, 90%);  
+    --color-5-hover: hsl(55, 100%, 62%);
 
     /* Spacing */
     --spacing-1: .125rem;
@@ -55,12 +51,22 @@ html {
     --radius-4: .5rem;
     --radius-5: .75rem;
     --radius-6: 1rem;
+    --radius-10: 3rem;
     --radius-full: 9999px;
+}
+
+:root.dark {
+    --bg-color: hsl(240, 3%, 8%);
+    --text-color:hsl(240, 15%, 92%);
+    --footer-bg: hsl(240, 3%, 5%);
+    --card-1: hsl(0, 3%, 10%);
+    --card-1-hover: hsl(0, 3%, 13%);
+    --card-outline: hsl(240, 15%, 92%);
 }
 
 @media (prefers-reduced-motion: no-preference) {
     html {
-        interpolate-size: allow-keywords; /* 3. Enable keyword animations */
+        interpolate-size: allow-keywords;
     }
 }
 
@@ -68,15 +74,17 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-family: var(--font-roboto);
     font-size: clamp(0.875rem, 0.831rem + 0.1878vw, 1rem);
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.5;
     letter-spacing: .7;
-    -webkit-font-smoothing: antialiased; /* 5. Improve text rendering */
+    transition: all .3s;
+    -webkit-font-smoothing: antialiased;
 }
 
-img, picture, video, canvas, svg {
+img, picture, video, canvas {
     display: block;
     width: 100%; 
     height: auto;
@@ -86,6 +94,7 @@ img, picture, video, canvas, svg {
 
 input, button, textarea, select {
     font: inherit;
+    color: inherit;
 }
 
 li {
@@ -117,7 +126,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #root, #__next {
-    isolation: isolate; /* Create a root stacking context*/
+    isolation: isolate;
 }
 
 #root {
@@ -177,4 +186,35 @@ h1, h2, h3, h4, h5, h6 {
 .text-preset-6 {
   font-size: clamp(0.75rem, 0.7rem + 0.18vw, 0.9rem);
   font-weight: 400;
+}
+
+/* for the transparent input */
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill,
+input:-webkit-autofill:hover,
+textarea:-webkit-autofill:hover,
+select:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+input:-internal-autofill-selected {
+  -webkit-text-fill-color: var(--color-4) !important;           
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  box-shadow: 0 0 0px 1000px transparent inset !important;
+  background-color: transparent !important;
+  background-clip: padding-box !important;
+  transition: background-color 9999s ease-in-out 0s !important;
+}
+
+
+input:-webkit-autofill::first-line,
+textarea:-webkit-autofill::first-line {
+  -webkit-text-fill-color: inherit !important;
+}
+
+input, textarea {
+  background-clip: padding-box;
 }
