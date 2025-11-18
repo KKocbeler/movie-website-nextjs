@@ -1,0 +1,109 @@
+.login {
+    display: grid;
+    place-content: center;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background-image:
+        radial-gradient(circle at 50% 200%, rgba(26, 126, 173, .6), rgba(0, 0, 0, 0.8)),
+        url("/images/login-bg.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: var(--color-4);
+
+    .login__wrapper {
+        position: relative;
+        z-index: 99999999;
+        padding: 3rem;
+        border-radius: var(--radius-5);
+        min-width: 425px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        background-image: radial-gradient(circle at 50% 200%, var(--color-3), var(--color-2));
+        
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            width: 100%;
+            .input-box {
+                position: relative;
+                margin-top: 2rem;
+                input {
+                    background: transparent;
+                    width: 100%;
+                    border: none;
+                    border-bottom: 1px solid var(--color-2);
+                    outline: none;
+                    padding: var(--spacing-2);
+
+                    &:focus ~ label,
+                    &:valid ~ label {
+                        top: -0.425rem;
+                        font-size: .775rem;
+                    }
+                    
+                }
+
+                label {
+                    position: absolute;
+                    top: 50%; left: 0;
+                    transform: translateY(-50%);
+                    transition: all .3s;
+                }
+
+                svg {
+                    position: absolute;
+                    top: 50%; right: .3rem;
+                    transform: translateY(-50%);
+                }
+            }
+
+            .check {
+                display: flex;
+                justify-content: space-between;
+                margin: var(--spacing-2) 0 var(--spacing-8);
+
+                .check-box {
+                    display: flex;
+                    gap: var(--spacing-2);
+                }
+
+                a:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            .login__button {
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: var(--spacing-4);
+                border-radius: var(--radius-2);
+                background-color: var(--color-2);
+                color: var(--color-1);
+                transition: background-color .3s;
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                &:hover {
+                    background-color: var(--color-2-hover);
+                }
+            }
+
+            > p {
+                text-align: center;
+                margin-top: var(--spacing-8);
+
+                a {
+                    color: var(--color-3);
+                    font-weight: bold;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
+    }
+}

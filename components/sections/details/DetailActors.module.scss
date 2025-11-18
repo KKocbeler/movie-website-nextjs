@@ -1,0 +1,56 @@
+.movie-actors {
+    .movie-actors__wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+        gap: 1rem;
+        transition: max-height 0.6s ease-in-out;
+
+
+        .movie-actors__card {
+            padding: var(--spacing-3) ;
+            border-radius: var(--radius-3);
+            background-color: var(--card-1);
+            transition: all .3s ease;
+
+            &:hover {
+                background-color: var(--card-1-hover);
+                transform: translateY(-0.25rem);
+            }
+
+            a {
+                display: flex;
+                align-items: center;
+                gap: var(--spacing-3);
+
+                .movie-actors__image {
+                    padding: clamp(0.1875rem, 0.0335rem + 0.6573vw, 0.625rem);
+
+                    img {
+                        width: clamp(4rem, 3.6479rem + 1.5023vw, 5rem); height: clamp(4rem, 3.6479rem + 1.5023vw, 5rem);
+                        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+                        object-fit: cover;
+                        border-radius: 50%;
+                    }
+                }
+
+                .movie-actors__info {
+                    span {
+                        color: var(--color-3);
+                    }
+                }
+            }
+
+        }
+    }
+
+    .show-more {
+        display: block;
+        margin: 1rem auto 0;
+        
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+}
+
