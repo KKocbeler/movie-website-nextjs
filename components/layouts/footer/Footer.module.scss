@@ -1,16 +1,25 @@
+.gap {
+    margin-top: clamp(1rem, -0.4085rem + 6.0094vw, 5rem);
+}
 #footer {
-    margin-top: 3.75rem;
-    background-color: rgb(10, 10, 10);
+    margin-top: auto;
+    background-color: var(--footer-bg);
 
-    .footer-body {
+    .footer__body {
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-direction: column;
         gap: 2rem;
         padding: 1.875rem 0;
+
+        .footer__logo {
+            img {
+                filter: brightness(0) saturate(100%) invert(34%) sepia(73%) saturate(544%) hue-rotate(154deg) brightness(95%) contrast(93%);
+            }
+        }
         
-        .subscribe {
+        .footer__subscribe {
             display: grid;
             gap: .625rem;
             text-align: center;
@@ -37,20 +46,23 @@
             }
         }
 
-        .social-list {
+        .footer__social-list {
             padding: 0;
             display: flex;
             gap: .9375rem;
-            .social-list__item {
+
+            .footer__list-item {
                 a {
                     svg {
                         width: 1.75rem; height: auto;
                         transition: color .3s ease;
+                        color: var(--color-3);
+                        transition: transform .3s;
                     }
 
                     &:hover {
                         svg {
-                            color: var(--color-3);
+                            transform: translateY(-0.25rem);
                         }
                     }
                 }
@@ -62,7 +74,7 @@
         @media (min-width: 61.9375rem) {
             flex-direction: row;
 
-            .subscribe {
+            .footer__subscribe {
                 form {
                     flex-direction: row;
 

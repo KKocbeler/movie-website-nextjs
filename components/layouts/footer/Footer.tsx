@@ -29,14 +29,16 @@ const socialLinks = [
 
 const Footer = () => {
   return (
+    <>  
+        <div className={styles["gap"]}></div>
         <footer id={styles.footer}>        
-            <div className={`${styles["footer-body"]} container`}>
-                <div className={styles["footer-logo"]}>
+            <div className={`${styles["footer__body"]} container`}>
+                <div className={styles["footer__logo"]}>
                     <Link href={"/"}>
-                        <Image src={"/images/logos.png"} alt='Movie logo' width={80} height={120}></Image>
+                        <Image src={"/images/logo.png"} alt='Movie logo' width={80} height={80}></Image>
                     </Link>
                 </div>
-                <div className={styles["subscribe"]}>
+                <div className={styles["footer__subscribe"]}>
                     <p className='text-preset-6'>NOT QUITE READY FOR SAVVY?</p>
                     <p>Join our community for free. No spam ever.</p>
                     <form>
@@ -47,9 +49,9 @@ const Footer = () => {
                             </button>
                     </form>
                 </div>  
-                <ul className={styles["social-list"]}>
+                <ul className={styles["footer__social-list"]}>
                     {socialLinks.map((link) => (
-                        <li className={styles["social-list__item"]} key={link.label} title={link.label}>
+                        <li className={styles["footer__list-item"]} key={link.label} title={link.label}>
                             <a href={link.path}>
                                 {link.icon} 
                                 <span className="sr-only">{link.label}</span>
@@ -59,6 +61,8 @@ const Footer = () => {
                 </ul>
             </div>
         </footer>
+    </>
+
   )
 }
 
