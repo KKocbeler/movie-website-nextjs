@@ -1,0 +1,22 @@
+.error {
+    .error__wrapper {
+        display: grid;
+        justify-items: center;
+
+        img {
+            width: 17rem;
+            height: auto;
+            filter: brightness(0) saturate(100%) invert(35%) sepia(61%) saturate(1051%) hue-rotate(164deg) brightness(85%) contrast(85%);
+        }
+
+        .error__title {
+            margin: var(--spacing-1) 0 var(--spacing-5);
+        }
+
+        .error__message {
+            a {
+                color: var(--color-3);
+            }
+        }
+    }
+}
