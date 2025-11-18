@@ -1,29 +1,40 @@
 "use client"
-import Link from 'next/link'
-import { CiSearch } from 'react-icons/ci'
-import styles from "./Navbar.module.scss"
-import Image from 'next/image';
-import { FaFacebookF, FaInstagram, FaXTwitter, FaYoutube } from 'react-icons/fa6';
-import { useState } from 'react';
-import { IoIosArrowDown } from 'react-icons/io';
-import { RxHamburgerMenu } from 'react-icons/rx';
 
-const navList = [
+import Link from 'next/link'
+import styles from "./Navbar.module.scss"
+import { FaFacebookF, FaInstagram, FaMessage, FaXTwitter, FaYoutube } from 'react-icons/fa6';
+import { useEffect, useState } from 'react';
+import { IoMdMoon } from 'react-icons/io';
+import { RxHamburgerMenu } from 'react-icons/rx';
+import { MdLocalMovies, MdSunny } from 'react-icons/md';
+import Image from 'next/image';
+import NavbarAuthor from './NavbarAuthor';
+import NavbarSearch from './NavbarSearch';
+import NavbarMobile from './NavbarMobile';
+import { FaHome } from 'react-icons/fa';
+import { RiMovie2Fill } from 'react-icons/ri';
+
+
+export const navList = [
     {
         label: "Home",
         path: "/",
+        icon: <FaHome />
     },
     {
         label: "Movies",
         path: "/movies",
+        icon: <MdLocalMovies />
     },
         {
         label: "Series",
         path: "/series",
+        icon: <RiMovie2Fill />
     },
     {
         label: "Contact",
         path: "/contact",
+        icon: <FaMessage />
     },
 ];
 
@@ -50,15 +61,25 @@ const socialLinks = [
   },
 ];
 
-const genres = ["All", "Horor", "Thriller", "Animation", "Adventure", "Action"]
-
 const Navbar = () => {
-    const [currentGenre, setCurrentGenre] = useState(genres[0]);
-    const [IsBackdropOpen, setIsBackdropOpen] = useState(false);
+    const [darkMode, setDarkMode] = useState<boolean | null>();
 
-    const handleBackdrop = (genre: string) => {
-        setCurrentGenre(genre);
-        setIsBackdropOpen(false);
+    useEffect(() => {
+        const savedTheme = localStorage.getItem("Theme");
+
+        if(savedTheme !== null) {
+            setDarkMode(JSON.parse(savedTheme))
+        }
+    }, [])
+
+    useEffect(() => {
+        const root = document.documentElement;
+        root.classList.toggle("dark", darkMode ? darkMode : false);
+    }, [darkMode]);
+
+    const handleTheme = () => {
+        setDarkMode(!darkMode);
+        localStorage.setItem("Theme", JSON.stringify(!darkMode));
     }
 
     return (
@@ -66,7 +87,7 @@ const Navbar = () => {
         <nav className={`${styles.navbar} container`}>
             <div className={styles["nav-logo"]}>
                 <Link href={"/"}>
-                    <h1 className='text-preset-1'>MOVIE</h1>
+                    <Image src={"/images/logo.png"} alt='Movie logo' width={80} height={80}></Image>
                 </Link>
             </div>
             <div className={styles["nav-menu"]}>
@@ -83,69 +104,26 @@ const Navbar = () => {
                             </li>
                         ))
                     }
-
                 </ul>
             </div>
-            <div className={styles["author"]}>
-                <Link 
-                    href={"/"}
-                    className={`${styles["login"]} text-preset-5`}
-                >
-                    Login
-                </Link>
-                <Link 
-                    href={"/"}
-                    className={`${styles["sign-up"]} text-preset-5`}
-                >
-                    Sign Up
-                </Link>
-            </div>
-            <div className={styles["hamburger-menu"]}>
-                <button
-                    type='button'
-                    className={styles["hamburger-menu__icon"]}
-                >
-                    <RxHamburgerMenu />
-                    <span className='sr-only'>Menu</span>
-                </button>
-            </div>
+            <NavbarAuthor />
+            <button 
+                className={styles["theme-button"]}
+                type='button'
+                onClick={handleTheme}
+                aria-label='Theme'
+            >
+                {
+                    darkMode ? (
+                        <MdSunny />
+                    ) : (
+                        <IoMdMoon />
+                    )
+                }
+            </button>
+            <NavbarMobile />
         </nav>
-        <div className={`${styles["nav-search"]} container`}>
-            <form action="">
-                <div className={styles["input-box"]}>
-                    <div className={styles["genre-section"]}>
-                        <button
-                            type='button'
-                            className={styles["genre-button"]}
-                            onClick={() => setIsBackdropOpen(!IsBackdropOpen)}
-                        >
-                            {currentGenre}
-                            <IoIosArrowDown />
-                        </button>
-                        <ul className={`${styles["backdrop-list"]} ${IsBackdropOpen ? styles.show : ""}`}>
-                            {
-                                genres.filter((genre) => genre !== currentGenre).map((genre) => (
-                                    <li 
-                                        className={styles["backdrop-list-item"]}
-                                        key={genre}
-                                        onClick={() => handleBackdrop(genre)}
-                                    >
-                                        {genre}
-                                    </li>
-                                ))
-                            }
-                        </ul>
-                    </div>
-                    <input type="text" placeholder='Search for a movie'/>
-                    <button
-                        type='submit'
-                        className={styles.search}
-                    >
-                        <CiSearch />
-                    </button>
-                </div>
-            </form>
-        </div>
+        <NavbarSearch />
         <div className={`${styles["social"]} container`}>
             <p className='text-preset-6'>FOLLOW US</p>
             <ul className={styles["social__list"]}>
