@@ -13,7 +13,7 @@
 
         }
         img {
-            width: 100%; height: auto;
+            width: 100%; height: 100%;
         }
 
         .card__hover {
@@ -51,7 +51,7 @@
 
     .card__content {
         .card__title {
-            margin-top: var(--spacing-3);
+            margin-top: var(--spacing-2);
             line-clamp: 2;
         }
     }

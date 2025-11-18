@@ -10,18 +10,19 @@ import { useEffect } from 'react';
 import { LineBreaker } from '../utils/LineBreaker';
 
 type Props = {
-    title: string;
+    title: string | undefined;
     genre_ids: number[];
     release_date: string;
     vote_average: number;
     poster_path: string;
-    movie_id: number
+    listItem_id: number;
 } 
 
-const Card = ({title, genre_ids, release_date, vote_average, poster_path, movie_id}: Props) => {
+const Card = ({title, genre_ids, release_date, vote_average, poster_path}: Props) => {
     const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
     const { setGenres, getGenreNameById } = useGenreStore();
     const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+
     useEffect(() => {
         async function getGenres () {
             const res = await fetch (
@@ -37,13 +38,12 @@ const Card = ({title, genre_ids, release_date, vote_average, poster_path, movie_
     
     return (
         <section className={styles["card"]}>
-            <Link href={`/movies/${movie_id}`}>
                 <div className={styles["card__image"]}>
                     <Image 
                         src={poster_path ? `${IMAGE_BASE_URL}/${poster_path}` : "/images/backup-bg.png"} 
                         alt='Card' 
-                        width={400} 
-                        height={270}
+                        width={300} 
+                        height={400}
                     >
                     </Image>
                     <div className={styles["card__hover"]}>
@@ -65,11 +65,10 @@ const Card = ({title, genre_ids, release_date, vote_average, poster_path, movie_
                     </div>
                 </div>
                 <div className={styles["card__content"]}>
-                    <p className={`${styles["card__title"]} text-preset-5`}>
-                        {LineBreaker(title)}
+                    <p className={`${styles["card__title"]}`}>
+                        {LineBreaker(title || "unknown")}
                     </p>
                 </div>
-            </Link> 
          </section>
     )
 }
