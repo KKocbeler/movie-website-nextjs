@@ -1,0 +1,92 @@
+.nav-search {
+    display: flex;
+    align-items: center;
+    margin-top: var(--spacing-5);
+    margin-bottom: var(--spacing-4);
+    .media-section {
+        position: relative;
+        .media-button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: clamp(4.7rem, 4.72rem + 5.5587vw, 9.3rem);
+            padding: var(--spacing-4) var(--spacing-4);
+            border-radius: 0;
+            background-color: var(--card-1-hover);
+            font-size: clamp(.8rem, 0.75rem + 0.18vw, 1.2rem);
+            text-wrap: nowrap;
+            transition: background-color .3s;
+            svg {
+                width: 1rem; height: 1rem;
+            }
+        }
+
+        .backdrop-list {
+            position: absolute;
+            z-index: 9999;
+            width: 100%;
+            transition: all .3s ease;
+            visibility: hidden;
+            opacity: 0;
+            transform: scaleY(0) translateY(-1rem);
+            transform-origin: top;
+            &.show {
+                visibility: visible;
+                opacity: 1;
+                transform: scaleY(1) translateY(0);
+            }
+
+            .backdrop-list-item {
+                padding: var(--spacing-3) var(--spacing-4);
+                background-color: var(--card-1-hover);
+                border-bottom: 1px solid var(--card-1);
+                border-top: 1px solid var(--card-1);
+                cursor: pointer;
+
+                &:hover {
+                    background-color: var(--card-1);
+                }
+            }
+        }
+    }
+
+    form {
+        width: 100%;
+        .input-box {
+            position: relative;
+            input {
+                width: 100%;
+                padding: .625rem;
+                border: 2px solid var(--card-1);
+                border-radius: var(--radius-1);
+                background-color: var(--card-1);
+                transition: background-color 0.3s, border-color 0.3s;
+                color: inherit;
+                letter-spacing: 1.1;
+                outline: none;
+
+                &:hover {
+                    background-color: var(--card-1-hover);
+                }
+                &:focus {
+                    border-color: var(--color-3);
+                }
+            }
+
+            .search {
+                position: absolute;
+                top: 50%; right: 1rem;
+                transform: translateY(-50%);
+                line-height: 0;
+                
+                svg {
+                    color: var(--color-3);
+                    width: 1.75rem; height: 1.75rem;
+                    transition: all .3s ease;
+                    
+                }
+            }
+        }
+
+    }
+}

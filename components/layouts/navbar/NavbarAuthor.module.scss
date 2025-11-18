@@ -1,0 +1,21 @@
+.author {
+    display: none;
+
+    .sign-up {
+        padding: var(--spacing-3) var(--spacing-6);
+        border-radius: var(--radius-10);
+        color: var(--color-4);
+        background-color:var(--color-3);
+        transition: background-color .3s ease;
+
+        &:hover {
+            background-color: var(--color-3-hover);
+        }
+    }
+
+    @media (min-width: 56rem) {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-7);
+    }
+}

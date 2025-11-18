@@ -1,0 +1,8 @@
+.back-to-home {
+    position: absolute;
+    top: 5%; left: 5%;
+    
+    img{
+        filter: brightness(0) saturate(100%) invert(47%) sepia(44%) saturate(936%) hue-rotate(155deg) brightness(80%) contrast(88%);
+    }
+}

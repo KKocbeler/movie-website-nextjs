@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import styles from "./ProgressBar.module.scss";
 
@@ -25,19 +26,19 @@ const ProgressBar = ({ value }: Props) => {
       >
         <defs>
           <linearGradient id="GradientColor">
-            <stop offset="0%" stopColor="#91683c" />
-            <stop offset="100%" stopColor="#91683c" />
+            <stop offset="0%" stopColor="hsl(199, 74%, 40%)" />
+            <stop offset="100%" stopColor="hsl(199, 74%, 40%)" />
           </linearGradient>
         </defs>
 
         <circle className={styles["circle-bg"]} cx="80" cy="80" r={radius} />
         <circle
-          className={styles["circle-progress"]}
-          cx="80"
-          cy="80"
-          r={radius}
-          strokeDasharray={circumference}
-          strokeDashoffset={offset}
+            className={styles["circle-progress"]}
+            cx="80"
+            cy="80"
+            r={radius}
+            strokeDasharray={circumference}
+            strokeDashoffset={offset}
         />
       </svg>
       <div className={styles["rate"]}>{value?.toFixed(1)}</div>
