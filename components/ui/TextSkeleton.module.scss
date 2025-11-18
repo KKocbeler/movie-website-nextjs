@@ -1,0 +1,13 @@
+.text-skeleton {
+    background-color: var(--card-1);
+    height: 1rem;
+    margin-top: var(--spacing-2);
+    border-radius: var(--radius-2);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {opacity: .6;}
+    50%{opacity: 1;}
+    100% {opacity: 0.6;}
+}
