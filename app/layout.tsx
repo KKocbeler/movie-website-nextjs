@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter, Poppins, TikTok_Sans } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Poppins, Roboto, TikTok_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layouts/navbar/Navbar";
 import Footer from "@/components/layouts/footer/Footer";
 import BackToTop from "@/components/common/BackToTop";
+import AlwaysTop from "@/components/common/AlwaysTop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,10 +16,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const inter = Inter({
+const roboto = Roboto({
   subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["400", "500", "700"]  // ihtiyaç duyduğun ağırlıkları ekle
+  weight: ["400", "500", "700"], // istediğin ağırlıkları ekleyebilirsin
+  variable: "--font-roboto", // optional: css variable olarak kullanmak için
 });
 
 export const metadata: Metadata = {
@@ -33,11 +34,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${geistMono.variable}`}>
+      <body className={`${roboto.variable} ${geistMono.variable}`}>
         <Navbar />
         {children}
         <Footer />
-        <BackToTop />   
+        <BackToTop /> 
+        <AlwaysTop /> 
       </body>
     </html>
   );
