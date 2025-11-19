@@ -16,7 +16,7 @@ const NavbarSearch = () => {
     useEffect(() => {
         const savedType = localStorage.getItem("savedType");
 
-        if (savedType === " ") {
+        if (savedType) {
             setSearchType(savedType);
         } else {
             setSearchType("All");
@@ -45,7 +45,7 @@ const NavbarSearch = () => {
                     className={styles["media-button"]}
                     onClick={() => setIsBackdropOpen(!IsBackdropOpen)}
                 >
-                    {searchType}
+                    {searchType ? searchType : "-"}
                     <IoIosArrowDown />
                 </button>
                 <ul className={`${styles["backdrop-list"]} ${IsBackdropOpen ? styles.show : ""}`}>
