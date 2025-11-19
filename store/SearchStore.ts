@@ -7,7 +7,7 @@ type SearchState = {
 }
 
 export const useSearchStore = create<SearchState>((set) => ({
-    searchType: " ",
+    searchType: "",
     allTypes: ["All", "Movies", "TV Series"],
     setSearchType: (newType) => set({ searchType: newType}),
 }))
