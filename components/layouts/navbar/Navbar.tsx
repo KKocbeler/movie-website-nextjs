@@ -87,7 +87,7 @@ const Navbar = () => {
         <nav className={`${styles.navbar} container`}>
             <div className={styles["nav-logo"]}>
                 <Link href={"/"}>
-                    <Image src={"/images/logo.png"} alt='Movie logo' width={80} height={80}></Image>
+                    <Image src={"/images/logo.png"} alt='Movie logo' width={80} height={80} loading='eager'></Image>
                 </Link>
             </div>
             <div className={styles["nav-menu"]}>

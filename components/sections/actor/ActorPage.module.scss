@@ -7,7 +7,7 @@
 
         .actor__image {
             img {
-                width: 100%; height: auto;
+                width: 100%; height: clamp(25rem, 15.458rem + 40.7125vw, 35rem);
                 border-radius: var(--radius-3);
                 box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
             }

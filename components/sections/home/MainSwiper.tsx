@@ -31,13 +31,11 @@ const MainSwiper = () => {
 
             try {
                 const response = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`);
-                console.log(response)
                 if(!response.ok) throw new Error("Fetch Failed");
 
                 const data = await response.json();
                 
                 setUpcomingMovies(data.results)
-                console.log(data)
             } catch (err) {
                 setError((err as Error).message)
             } finally {
@@ -50,7 +48,7 @@ const MainSwiper = () => {
     }, [])
 
     if(error) return <ErrorPage />
-    console.log(error)
+
     return (
         <article className="upcoming-wrapper container">
             <Swiper
@@ -81,7 +79,7 @@ const MainSwiper = () => {
             >
                 {
                     loading ? (
-                        Array.from({ length: 4 }).map((_, i) => (
+                        Array.from({ length: 8 }).map((_, i) => (
                             <SwiperSlide key={i}>
                                 <CardSkeleton />
                             </SwiperSlide>

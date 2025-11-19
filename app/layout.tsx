@@ -6,11 +6,6 @@ import Footer from "@/components/layouts/footer/Footer";
 import BackToTop from "@/components/common/BackToTop";
 import AlwaysTop from "@/components/common/AlwaysTop";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
@@ -18,8 +13,8 @@ const geistMono = Geist_Mono({
 
 const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["400", "500", "700"], // istediğin ağırlıkları ekleyebilirsin
-  variable: "--font-roboto", // optional: css variable olarak kullanmak için
+  weight: ["400", "500", "700"], 
+  variable: "--font-roboto",
 });
 
 export const metadata: Metadata = {

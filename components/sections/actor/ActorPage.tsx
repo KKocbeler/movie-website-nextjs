@@ -25,7 +25,7 @@ const ActorPage = ({name}: Props) => {
     const [actor, setActor] = useState<Actor | null>(null);
     const [cast, setCast] = useState<Cast[] | null>(null);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("s");
+    const [error, setError] = useState("");
 
 
     const moviePerPage = 20;
