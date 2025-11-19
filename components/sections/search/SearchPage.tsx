@@ -8,7 +8,7 @@ import Pagination from "@/components/ui/Pagination";
 import { FixLinkText } from '@/components/utils/FixLinkText';
 import { usePagination } from "@/hooks/usePagination";
 import { useSearchStore } from '@/store/SearchStore';
-import { SearchType } from '@/types/SearchTypes';
+import { Movie, Serie } from "@/types/ListItem";
 import Link from "next/link";
 import { useEffect, useState } from 'react'
 
@@ -20,7 +20,7 @@ type Props = {
 const SearchPage = ({query }: Props) => {
     const { page, handlePageChange} = usePagination()
     const { searchType } = useSearchStore();
-    const [found, setFound] = useState<SearchType[]>([]);
+    const [found, setFound] = useState<Movie[] | Serie[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const [totalPage, setTotalPage] = useState<number>();
@@ -72,15 +72,18 @@ const SearchPage = ({query }: Props) => {
                     found
                     .filter((item) => item.poster_path)
                     .map((item) => {
+                            const itemTitle = "title" in item ? item.title : item.name;
+                            const releaseDate = "release_date" in item ? item.release_date : item.first_air_date;
+                            const link = "first_air_date" in item ? "series" : "movies"
                         return (
                             <section className={styles["search__card"]} key={item.id}>
-                                <Link href={`/${item.media_type === "tv" ? "series" : "movies"}/${item.id}`}>
+                                <Link href={`/${link}/${item.id}`}>
                                     <Card
                                         genre_ids={item.genre_ids}
                                         listItem_id={item.id}
                                         poster_path={item.poster_path}
-                                        release_date={item.release_date}
-                                        title={item.title || item.name}
+                                        release_date={releaseDate}
+                                        title={itemTitle}
                                         vote_average={item.vote_average}
                                     />
                                 </Link>
