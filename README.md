@@ -17,7 +17,7 @@ It’s built with a **mobile-first** approach and fully optimized for **100% SEO
 
 ## Built With
 
-- ⚛️ **Next.js 14**  
+- ⚛️ **Next.js 15**  
 - 🟦 **TypeScript**  
 - 🧠 **Zustand** (global state management)  
 - 🎨 **Sass (SCSS)**  
