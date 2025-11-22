@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎬 Next.js Movie App
 
-## Getting Started
+**Next.js Movie App** is a modern movie discovery platform that uses the TMDB API to list movies, series, and actor details.  
+Users can explore movies, check actor information, and perform searches.
 
-First, run the development server:
+**🌐 Live Demo:** https://movie-website-nexjs.netlify.app/
+
+---
+
+## 🚀 About the Project
+
+This project is designed for movie enthusiasts to access full details about films and series, including IMDB ratings, cast, trailers, storylines, and posters.
+
+It’s built with a **mobile-first** approach and fully optimized for **100% SEO**.
+
+---
+
+## 🛠️ Built With
+
+- ⚛️ **Next.js 14**  
+- 🟦 **TypeScript**  
+- 🧠 **Zustand** (global state management)  
+- 🎨 **Sass (SCSS)**  
+- 📱 **Mobile-first responsive design**  
+- 🎬 **TMDB API**
+
+---
+
+## ✨ Features
+
+- 🎥 **Movie & TV series listing**  
+- ⭐ **IMDB rating display**  
+- 🧑‍🎤 **Actor detail pages**  
+- 🔍 **Search functionality**  
+- 📄 **Movie & series detail pages (storyline + all info)**  
+- 🖼️ **High-resolution poster & backdrop images**  
+- 📱 **Mobile-first & fully responsive design**  
+- 🚀 **Server & Client Component architecture**  
+- ⚡ **Performance optimization techniques with Next.js**  
+- 🔎 **100% SEO optimized (meta tags, dynamic head, structured data)**  
+
+---
+
+## 🧠 What I Learned
+
+During this project, I improved my skills in:
+
+- 🔹 **Global state management with Zustand**  
+- 🔹 **Proper use of Next.js Server & Client Components**  
+- 🔹 **Performance optimization techniques**  
+  - Server Components  
+  - Lazy loading  
+  - Suspense / streaming  
+  - API caching  
+  - Optimized route segments  
+- 🔹 **Achieving 100% SEO in Next.js (Lighthouse)**  
+  - Dynamic metadata  
+  - Open Graph  
+  - Schema.org structured data  
+
+---
+
+## 🖼️ Screenshots
+
+![Home Page](/public/images/github/home__page.png)
+![Actor Page](/public/images/github/actor__page.png)
+![Detail Page](/public/images/github/detail__page.png)
+![Detail Page 2](/public/images/github/detail__page-2.png)
+![Series Page](/public/images/github/series__page.png)
+
+---
+
+## 📦 Getting Started
+
+To run the project locally:
 
 ```bash
+# Clone the repository
+git clone https://github.com/KKocbeler/movie-website-nextjs.git
+
+# Navigate to the project folder
+cd movie-website-nextjs
+
+# Install dependencies
+npm install
+
+# Start the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
