@@ -1,91 +1,54 @@
-"use client"
-
-import { useEffect, useState } from "react"
 import Card from "@/components/ui/Card";
 import styles from "./ListPage.module.scss";
-import Pagination from "@/components/ui/Pagination";
-import CardSkeleton from "@/components/ui/CardSkeleton";
-import { Movie, Serie } from "@/types/ListItem";
 import Link from "next/link";
 import ErrorPage from "@/components/ui/ErrorPage";
-import { usePagination } from "@/hooks/usePagination";
+import { Movie } from "@/types/ListItem";
+import Pagination from "@/components/ui/Pagination";
 
 type Props = {
-    type: "movie" | "tv";
-    title: string;
-}
+  type: "movie" | "tv";
+  title: string;
+  page: number
+};
 
-const ListPage = ({type, title}: Props) => {
-    const { page, handlePageChange } = usePagination();
+type TMDBResponse<T> = {
+  page: number;
+  results: T[];
+  total_pages: number;
+  total_results: number;
+};
+
+const ListPage = async ({ type, title, page }: Props) => {
     const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
-    const [list, setList] = useState<Movie[] | Serie[]>([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string>("");
+    const res = await fetch(
+        `https://api.themoviedb.org/3/${type}/popular?api_key=${apiKey}&language=en-US&page=${page}`,
+        { cache: "no-store" }
+    );
 
-    useEffect(() => {
-        async function getList () {
-            setLoading(true)
-            try {
-                const response = await fetch(`https://api.themoviedb.org/3/${type}/popular?api_key=${apiKey}&language=en-US&page=${page}`)
+    const data: TMDBResponse<Movie> = await res.json();
 
-                if(!response.ok) throw new Error("Fetch failed");
-
-                const data = await response.json();
-
-                setList(data.results);
-
-                console.log(data)
-            } catch (err) {
-                setError((err as Error).message)
-            } finally {
-                setLoading(false)
-            }
-        }
-
-        getList()
-    }, [page, type])
-
-    if(error) return <ErrorPage />
+    if (!data || !data.results) return <ErrorPage />;
 
     return (
         <section className={`${styles["list-page"]} container`}>
-            <h1 className="text-preset-2">{title}</h1>
-            <article className={styles["list-wrapper"]}>
-                {
-                    loading ? (
-                        Array.from({ length: 10}).map((_, i) => (
-                            <CardSkeleton key={i}/>
-                        ))
-                    ) : (
-                        list.map((listItem) => {
-                            const itemTitle = "title" in listItem ? listItem.title : listItem.name;
-                            const releaseDate = "release_date" in listItem ? listItem.release_date : listItem.first_air_date;
-                            return (
-                                <Link 
-                                    href={`/${type === "movie" ? "movies" : "series"}/${listItem.id}`}
-                                    key={listItem.id}
-                                >
-                                    <Card
-                                        key={listItem.id}
-                                        genre_ids={listItem.genre_ids}
-                                        poster_path={listItem.poster_path}
-                                        release_date={releaseDate}
-                                        title={itemTitle}
-                                        vote_average={listItem.vote_average}
-                                        listItem_id= {listItem.id}
-                                    />
-                                </Link>
-                        )})
-                    )
-                }
-            </article>
-            <Pagination 
-                currentPage={page} 
-                totalPages={20}  
-                setPage={handlePageChange}
-            />
+        <h1 className="text-preset-2">{title}</h1>
+        <article className={styles["list-wrapper"]}>
+            {data.results.map((item) => (
+            <Link href={`/${type === "tv" ? "series" : "movies"}/${item.id}`} key={item.id}>
+                <Card
+                genre_ids={item.genre_ids}
+                poster_path={item.poster_path}
+                release_date={item.release_date}
+                title={item.title}
+                vote_average={item.vote_average}
+                listItem_id={item.id}
+                />
+            </Link>
+            ))}
+        </article>
+        <Pagination currentPage={page} totalPages={data.total_pages} />
         </section>
-    )
-}
+    );
+};
 
-export default ListPage
+export default ListPage;

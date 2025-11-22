@@ -61,8 +61,8 @@ const DetailGallery = ({images}: Props) => {
                             <Image
                                 src={`${IMAGE_BASE_URL}${img.file_path}`}
                                 alt="movie backdrop"
-                                width={img.width}
-                                height={img.height}
+                                width={690}
+                                height={390}
                                 className="main-image"
                                 onClick={() => setSelectedImage({
                                     src: `${IMAGE_BASE_URL}${img.file_path}`,

@@ -26,6 +26,9 @@
             .biography {
                 margin-top: var(--spacing-5);
 
+                .biography-text {
+                    cursor: pointer;
+                }
             }
         }
 

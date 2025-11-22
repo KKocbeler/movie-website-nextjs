@@ -72,13 +72,13 @@
             .movie-rate {
                 font-size: clamp(2.2rem, 4vw + 0.8rem, 3.4rem);
                 font-weight: 800;
-                color: var(--color-5);
+                color: #FFD700;
             }
 
             svg {
                 position: absolute;
                 top: 0; right: -1.5rem;
-                width: 1.125rem;
+                width: 1.5rem; height: 1.5rem;
             }
         }
 

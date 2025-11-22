@@ -18,7 +18,7 @@ type Props = {
 }
 
 const SearchPage = ({query }: Props) => {
-    const { page, handlePageChange} = usePagination()
+    const { page } = usePagination()
     const { searchType } = useSearchStore();
     const [found, setFound] = useState<Movie[] | Serie[]>([]);
     const [loading, setLoading] = useState(false);
@@ -59,7 +59,7 @@ const SearchPage = ({query }: Props) => {
 
     return (
         <section className={styles["search"]}>
-            <h1 className="title text-preset-2">Arama Sonucu</h1>
+            <h1 className="title text-preset-2">Search Results</h1>
             <article className={styles["search__wrapper"]}>
                 {loading ? (
                     Array.from({ length: 10 }).map((_, i) => (
@@ -92,7 +92,7 @@ const SearchPage = ({query }: Props) => {
                     })
                 )}
             </article>
-            <Pagination currentPage={page} setPage={handlePageChange} totalPages={totalPage || 1}/>
+            <Pagination currentPage={page} totalPages={totalPage || 1}/>
         </section>
     )
 }

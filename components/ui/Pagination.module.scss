@@ -16,6 +16,11 @@
             padding: 10px;
             background-color: var(--color-3);
         }
+
+        &.disabled {
+            color: rgb(97, 95, 95);
+            cursor: pointer;
+        }
     }
 
 }

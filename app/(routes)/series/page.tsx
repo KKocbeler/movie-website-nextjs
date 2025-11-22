@@ -1,12 +1,11 @@
-import ListPage from '@/components/sections/listpage/ListPage';
-import { Suspense } from 'react';
+import ListPage from "@/components/sections/listpage/ListPage";
 
-const page = () => {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-        <ListPage title='Tv Series' type='tv'/>
-    </Suspense>
-  )
+type Props = {
+  searchParams?: { page?: string };
+};
+
+export default async function MoviesPage({ searchParams }: Props) {
+  const params = await searchParams; 
+  const page = Number(params?.page || 1);
+  return <ListPage title="Tv series" type="tv" page={page} />;
 }
-
-export default page

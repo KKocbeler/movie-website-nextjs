@@ -28,9 +28,6 @@ const Details = async ({id, type}: Props) => {
 
     const cast = data2.cast;
     const images = data3.backdrops.slice(0, 9);
-    console.log(cast)
-    console.log(images)
-    console.log(detailData)
     return (
         <div className="container">
             <DetailHeader 

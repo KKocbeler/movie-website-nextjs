@@ -1,53 +1,25 @@
-"use client"
+"use client";
 
 import "./MainSwiper.scss";
-import { Navigation, A11y, Autoplay } from 'swiper/modules';
+import { Navigation, Autoplay, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import { useEffect, useState } from "react";
-import { UpcomingMovie } from "@/types/UpcomingMovieTypes";
 import Link from "next/link";
-import { useGenreStore } from "@/store/GenreStore";
-import Genre from "@/components/ui/Genre";
+import Image from "next/image";
 import { IMAGE_BASE_URL } from "@/constants/tmdb";
-import CardSkeleton from "@/components/ui/CardSkeleton";
-import ErrorPage from "@/components/ui/ErrorPage";
+import { UpcomingMovie } from "@/types/UpcomingMovieTypes";
+import Genre from "@/components/ui/Genre";
+import { useGenreStore } from "@/store/GenreStore";
 
+type Props = {
+    upcomingMovies: UpcomingMovie[];
+};
 
-const MainSwiper = () => {
-    const [upComingMovies, setUpcomingMovies] = useState<UpcomingMovie[] | undefined>([]);
-    const [error, setError] = useState<string | null>(null);
-    const [loading, setLoading] = useState(false);
-    const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+const MainSwiper = ({ upcomingMovies }: Props) => {
     const getGenresName = useGenreStore((state) => state.getGenreNameById)
-
-    useEffect(() => {
-        
-        async function getUpcomingMovies () {
-            setLoading(true)
-
-            try {
-                const response = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`);
-                if(!response.ok) throw new Error("Fetch Failed");
-
-                const data = await response.json();
-                
-                setUpcomingMovies(data.results)
-            } catch (err) {
-                setError((err as Error).message)
-            } finally {
-                setLoading(false)
-            }
-
-        }
-
-        getUpcomingMovies();
-    }, [])
-
-    if(error) return <ErrorPage />
 
     return (
         <article className="upcoming-wrapper container">
@@ -78,46 +50,37 @@ const MainSwiper = () => {
                 }}
             >
                 {
-                    loading ? (
-                        Array.from({ length: 8 }).map((_, i) => (
-                            <SwiperSlide key={i}>
-                                <CardSkeleton />
-                            </SwiperSlide>
-                        ))
-                    ) : (
-                        upComingMovies?.slice(0, 8).map((movie) => (
-                            <SwiperSlide key={movie.id}>
-                                <Link href={`/movies/${movie.id}`}>
-                                    <section className="upcoming-movie">
-                                        <figure className="upcoming-movie__image">
-                                            <img src={`${IMAGE_BASE_URL}/${movie.poster_path}`} alt="" />
-                                            <figcaption className="sr-only">{movie.title}</figcaption>
-                                        </figure>
-                                        <div className="upcoming-movie__content">
-                                            <p className="movie-title text-preset-5">{movie.title}</p>
-                                            <ul className="movie-genre-list">
-                                                {
-                                                    movie.genre_ids.slice(0, 2).map((genreId) => {
-                                                        const genreName = getGenresName ? getGenresName(genreId) : "Loading...";
-                                                        return (
-                                                            <li className="movie-genre-list__item text-preset-6" key={genreId}>
-                                                                <Genre text={genreName}></Genre>
-                                                            </li>
-                                                        )
-                                                    })
-                                                }
-                                            </ul>
-                                        </div>
-                                        <div className="upcoming-badge">
-                                            <p className="text-preset-6">Upcoming</p>
-                                        </div>
-                                    </section>
-                                </Link>
-                            </SwiperSlide>
-                        ))
-                    )
+                    upcomingMovies?.slice(0, 16).map((movie) => (
+                        <SwiperSlide key={movie.id}>
+                            <Link href={`/movies/${movie.id}`}>
+                                <section className="upcoming-movie">
+                                    <figure className="upcoming-movie__image">
+                                        <Image src={`${IMAGE_BASE_URL}/${movie.poster_path}`} alt={`${movie.title}'s poster image`} width={350} height={500} loading="eager"/>
+                                        <figcaption className="sr-only">{movie.title}</figcaption>
+                                    </figure>
+                                    <div className="upcoming-movie__content">
+                                        <p className="movie-title text-preset-5">{movie.title}</p>
+                                        <ul className="movie-genre-list">
+                                            {
+                                                movie.genre_ids.slice(0, 2).map((genreId) => {
+                                                    const genreName = getGenresName ? getGenresName(genreId) : "Loading...";
+                                                    return (
+                                                        <li className="movie-genre-list__item text-preset-6" key={genreId}>
+                                                            <Genre text={genreName}></Genre>
+                                                        </li>
+                                                    )
+                                                })
+                                            }
+                                        </ul>
+                                    </div>
+                                    <div className="upcoming-badge">
+                                        <p className="text-preset-6">Upcoming</p>
+                                    </div>
+                                </section>
+                            </Link>
+                        </SwiperSlide>
+                    ))
                 }
-
             </Swiper>
         </article>
     )

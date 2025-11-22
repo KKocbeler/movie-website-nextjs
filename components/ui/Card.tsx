@@ -1,13 +1,12 @@
 "use client"
 
 import Image from 'next/image'
-import Link from 'next/link'
 import styles from "./Card.module.scss";
 import ProgressBar from './ProgressBar';
 import Genre from './Genre';
 import { useGenreStore } from '@/store/GenreStore';
-import { useEffect } from 'react';
 import { LineBreaker } from '../utils/LineBreaker';
+import { IMAGE_BASE_URL } from '@/constants/tmdb';
 
 type Props = {
     title: string | undefined;
@@ -16,34 +15,19 @@ type Props = {
     vote_average: number;
     poster_path: string;
     listItem_id: number;
-} 
+}
 
 const Card = ({title, genre_ids, release_date, vote_average, poster_path}: Props) => {
-    const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
-    const { setGenres, getGenreNameById } = useGenreStore();
-    const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+    const { getGenreNameById } = useGenreStore();
 
-    useEffect(() => {
-        async function getGenres () {
-            const res = await fetch (
-                `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`,
-                { cache: "no-store"}
-            );
-            const data = await res.json();
-            setGenres(data.genres)
-        }
-
-        getGenres();
-    }, [])
-    
     return (
         <section className={styles["card"]}>
                 <div className={styles["card__image"]}>
                     <Image 
                         src={poster_path ? `${IMAGE_BASE_URL}/${poster_path}` : "/images/backup-bg.png"} 
                         alt='Card' 
-                        width={300} 
-                        height={400}
+                        width={270} 
+                        height={380}
                     >
                     </Image>
                     <div className={styles["card__hover"]}>

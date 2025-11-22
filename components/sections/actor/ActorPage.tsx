@@ -14,6 +14,7 @@ import { IMAGE_BASE_URL } from "@/constants/tmdb";
 import TextSkeleton from "@/components/ui/TextSkeleton";
 import ErrorPage from "@/components/ui/ErrorPage";
 import { usePagination } from "@/hooks/usePagination";
+import { LineBreaker } from "@/components/utils/LineBreaker";
 
 type Props = {
     name: string;
@@ -26,6 +27,7 @@ const ActorPage = ({name}: Props) => {
     const [cast, setCast] = useState<Cast[] | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const [showAll, setShowAll] = useState(false)
 
 
     const moviePerPage = 20;
@@ -78,7 +80,7 @@ const ActorPage = ({name}: Props) => {
                             <CardSkeleton />
                         ) : (
                             <>
-                                <Image src={`${IMAGE_BASE_URL}/${actor?.profile_path}`} alt={`${actor?.name}'s photograph`} width={500} height={500}/>
+                                <Image src={`${IMAGE_BASE_URL}/${actor?.profile_path}`} alt={`${actor?.name}'s photograph`} width={320} height={400}/>
                                 <figcaption className="sr-only">{actor?.name}</figcaption>
                             </>
                         )
@@ -103,7 +105,8 @@ const ActorPage = ({name}: Props) => {
                             loading ? (
                                 <TextSkeleton width="100%"/>
                             ) : (
-                                <p>{actor?.biography}</p>
+                         
+                                <p className={styles["biography-text"]} onClick={() => setShowAll(!showAll)}>{LineBreaker(actor?.biography || "-", showAll ? 999999 : 300)}</p>
                             )
                         }
                         
@@ -136,7 +139,7 @@ const ActorPage = ({name}: Props) => {
                         )
                     }
 
-                    <Pagination currentPage={page} setPage={handlePageChange} totalPages={totalPages}/>
+                    <Pagination currentPage={page} totalPages={totalPages}/>
                 </section>
             </article>
         </div>

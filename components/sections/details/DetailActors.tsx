@@ -41,13 +41,13 @@ const DetailActors = ({cast}: Props) => {
                                     <Image
                                         src={actor.profile_path ? `${IMAGE_BASE_URL}${actor.profile_path}` : "/images/backup-bg.png"}
                                         alt={actor.name}
-                                        width={100}
-                                        height={100}
+                                        width={80}
+                                        height={80}
                                     />
                                 </div>
                                 <div className={styles["movie-actors__info"]}>
                                     <h3 className={`${styles["movie-actors__name"]} text-preset-5`}>{actor.name}</h3>
-                                    <span className={`${styles["movie-actors__character"]} text-preset-6`}>({actor.character})</span>
+                                    <span className={`${styles["movie-actors__character"]} text-preset-6`}>{actor.character ? (actor.character) : null}</span>
                                 </div>
                             </Link>
                         </section>
