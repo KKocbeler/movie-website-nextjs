@@ -15,7 +15,7 @@ It’s built with a **mobile-first** approach and fully optimized for **100% SEO
 
 ---
 
-## 🛠️ Built With
+## Built With
 
 - ⚛️ **Next.js 14**  
 - 🟦 **TypeScript**  
@@ -26,7 +26,7 @@ It’s built with a **mobile-first** approach and fully optimized for **100% SEO
 
 ---
 
-## ✨ Features
+## Features
 
 - 🎥 **Movie & TV series listing**  
 - ⭐ **IMDB rating display**  
@@ -41,7 +41,7 @@ It’s built with a **mobile-first** approach and fully optimized for **100% SEO
 
 ---
 
-## 🧠 What I Learned
+## What I Learned
 
 During this project, I improved my skills in:
 
@@ -60,7 +60,7 @@ During this project, I improved my skills in:
 
 ---
 
-## 🖼️ Screenshots
+## Screenshots
 
 ![Home Page](/public/images/github/home__page.png)
 ![Actor Page](/public/images/github/actor__page.png)
