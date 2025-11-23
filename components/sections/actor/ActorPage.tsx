@@ -15,13 +15,14 @@ import TextSkeleton from "@/components/ui/TextSkeleton";
 import ErrorPage from "@/components/ui/ErrorPage";
 import { usePagination } from "@/hooks/usePagination";
 import { LineBreaker } from "@/components/utils/LineBreaker";
+import { DateGenerator } from "@/components/utils/DateGenerator";
 
 type Props = {
     name: string;
 }
 
 const ActorPage = ({name}: Props) => {
-    const { page, handlePageChange } = usePagination();
+    const { page } = usePagination();
     const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
     const [actor, setActor] = useState<Actor | null>(null);
     const [cast, setCast] = useState<Cast[] | null>(null);
@@ -92,7 +93,7 @@ const ActorPage = ({name}: Props) => {
                     <section className={styles["personal__info"]}>
                         <h2>Personal Info</h2>
                         <ul className={styles["actor__details"]}>
-                            <li><strong>Born:</strong> {loading ? <TextSkeleton width="60%" /> : actor?.birthday || "—"}</li>
+                            <li><strong>Born:</strong> {loading ? <TextSkeleton width="60%" /> : DateGenerator(actor?.birthday) || "—"}</li>
                             <li><strong>Birthplace:</strong> {loading ? <TextSkeleton width="70%" /> : actor?.place_of_birth || "—"}</li>
                             <li><strong>Gender:</strong> {loading ? <TextSkeleton width="30%" /> : GetGenderLabel(actor?.gender)}</li>
                             <li><strong>Popularity:</strong> {loading ? <TextSkeleton width="20%" /> : actor?.popularity?.toFixed(1) || "—"}</li>
@@ -106,7 +107,7 @@ const ActorPage = ({name}: Props) => {
                                 <TextSkeleton width="100%"/>
                             ) : (
                          
-                                <p className={styles["biography-text"]} onClick={() => setShowAll(!showAll)}>{LineBreaker(actor?.biography || "-", showAll ? 999999 : 300)}</p>
+                                <p className={styles["biography-text"]} onClick={() => setShowAll(!showAll)}>{LineBreaker(actor?.biography || "-", showAll ? 999999 : 500)}</p>
                             )
                         }
                         
