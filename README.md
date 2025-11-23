@@ -17,7 +17,7 @@ It’s built with a **mobile-first** approach and fully optimized for **100% SEO
 
 ## Built With
 
-- ⚛️ **Next.js 14**  
+- ⚛️ **Next.js 15**  
 - 🟦 **TypeScript**  
 - 🧠 **Zustand** (global state management)  
 - 🎨 **Sass (SCSS)**  
@@ -66,7 +66,7 @@ During this project, I improved my skills in:
 ![Actor Page](/public/images/github/actor__page.png)
 ![Detail Page](/public/images/github/detail__page.png)
 ![Detail Page 2](/public/images/github/detail__page-2.png)
-![Series Page](/public/images/github/series__page.png)
+![Series Page](/public/images/github/series.png)
 
 ---
 
