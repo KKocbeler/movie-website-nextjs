@@ -17,27 +17,27 @@ It’s built with a **mobile-first** approach and fully optimized for **100% SEO
 
 ## Built With
 
-- ⚛️ **Next.js 15**  
-- 🟦 **TypeScript**  
-- 🧠 **Zustand** (global state management)  
-- 🎨 **Sass (SCSS)**  
-- 📱 **Mobile-first responsive design**  
-- 🎬 **TMDB API**
+- Next.js 15 
+- TypeScript 
+- Zustand
+- Sass (SCSS)  
+- Mobile-first responsive design**  
+- TMDB API
 
 ---
 
 ## Features
 
-- 🎥 **Movie & TV series listing**  
-- ⭐ **IMDB rating display**  
-- 🧑‍🎤 **Actor detail pages**  
-- 🔍 **Search functionality**  
-- 📄 **Movie & series detail pages (storyline + all info)**  
-- 🖼️ **High-resolution poster & backdrop images**  
-- 📱 **Mobile-first & fully responsive design**  
-- 🚀 **Server & Client Component architecture**  
-- ⚡ **Performance optimization techniques with Next.js**  
-- 🔎 **100% SEO optimized (meta tags, dynamic head, structured data)**  
+- Movie & TV series listing
+- IMDB rating display
+- Actor detail pages
+- Search functionality
+- Movie & series detail pages (storyline + all info)
+- High-resolution poster & backdrop images
+- Mobile-first & fully responsive design
+- Server & Client Component architecture
+- Performance optimization techniques with Next.js
+- 100% SEO optimized (meta tags, dynamic head, structured data)
 
 ---
 
@@ -45,15 +45,15 @@ It’s built with a **mobile-first** approach and fully optimized for **100% SEO
 
 During this project, I improved my skills in:
 
-- 🔹 **Global state management with Zustand**  
-- 🔹 **Proper use of Next.js Server & Client Components**  
-- 🔹 **Performance optimization techniques**  
+- Global state management with Zustand
+- Proper use of Next.js Server & Client Components
+- Performance optimization techniques
   - Server Components  
   - Lazy loading  
   - Suspense / streaming  
   - API caching  
   - Optimized route segments  
-- 🔹 **Achieving 100% SEO in Next.js (Lighthouse)**  
+- Achieving 100% SEO in Next.js (Lighthouse)
   - Dynamic metadata  
   - Open Graph  
   - Schema.org structured data  
