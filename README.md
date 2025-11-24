@@ -1,13 +1,13 @@
-# 🎬 Next.js Movie App
+#  Next.js Movie App
 
 **Next.js Movie App** is a modern movie discovery platform that uses the TMDB API to list movies, series, and actor details.  
 Users can explore movies, check actor information, and perform searches.
 
-**🌐 Live Demo:** https://movie-website-nexjs.netlify.app/
+** Live Demo:** https://movie-website-nexjs.netlify.app/
 
 ---
 
-## 🚀 About the Project
+##  About the Project
 
 This project is designed for movie enthusiasts to access full details about films and series, including IMDB ratings, cast, trailers, storylines, and posters.
 
