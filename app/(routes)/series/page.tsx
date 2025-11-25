@@ -4,6 +4,10 @@ type Props = {
   searchParams?: { page?: string };
 };
 
+export const metadata = {
+  title: "Tv Series",
+};
+
 export default async function MoviesPage({ searchParams }: Props) {
   const params = await searchParams; 
   const page = Number(params?.page || 1);

@@ -1,4 +1,3 @@
-import styles from "../../page.module.css";
 import { MainSwiperClient, HomeSwiperClient } from "@/components/wrappers/HomeClientWrapper";
 
 export default async function Home() {
@@ -30,7 +29,7 @@ export default async function Home() {
     const upcomingMovies = (await resUpcoming.json()).results.slice(0, 12);
 
     return (
-        <div className={styles.page}>
+        <div>
             <MainSwiperClient upcomingMovies={upcomingMovies} />
             {genreIdsToShow.map((id, index) => {
                 const genreName = data.genres.find((g: any) => g.id === id)?.name || "Genre";
